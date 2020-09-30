@@ -3,14 +3,8 @@ import React from "react";
 
 import {Main} from "../main/main";
 
-
 const App = () => {
-  // eslint-disable-next-line react/prop-types
-
-  return (
-    <Main />
-  );
+  return <Main />;
 };
 
-
-export default App;
+export {App};
