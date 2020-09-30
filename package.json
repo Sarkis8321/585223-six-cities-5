@@ -30,6 +30,7 @@
     "webpack": "4.41",
     "webpack-cli": "3.3",
     "webpack-dev-server": "3.10"
+
   },
   "engines": {
     "node": "10"
@@ -45,5 +46,6 @@
     "redux": "4",
     "redux-thunk": "2.3",
     "reselect": "4"
+
   }
 }
