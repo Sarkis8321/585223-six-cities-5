@@ -1,10 +1,10 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 const Main = (props) => {
-  // eslint-disable-next-line react/prop-types
   const {rentOptionsCount} = props;
 
-  return  <div className="page page--gray page--main">
+  return <div className="page page--gray page--main">
     <header className="header">
       <div className="container">
         <div className="header__wrapper">
@@ -17,7 +17,7 @@ const Main = (props) => {
             <ul className="header__nav-list">
               <li className="header__nav-item user">
                 <a className="header__nav-link header__nav-link--profile" href="#">
-                <div className="header__avatar-wrapper user__avatar-wrapper">
+                  <div className="header__avatar-wrapper user__avatar-wrapper">
                   </div>
                   <span className="header__user-name user__name">Oliver.conner@gmail.com</span>                </a>
               </li>
@@ -74,7 +74,7 @@ const Main = (props) => {
               <span className="places__sorting-caption">Sort by</span>
               <span className="places__sorting-type" tabIndex={0}>
                 Popular
-                  <svg className="places__sorting-arrow" width={7} height={4}>
+                <svg className="places__sorting-arrow" width={7} height={4}>
                   <use xlinkHref="#icon-arrow-select"></use>
                 </svg>
               </span>
@@ -262,5 +262,7 @@ const Main = (props) => {
     </main>
   </div>;
 };
-
+Main.propTypes = {
+  rentOptionsCount: PropTypes.number.isRequired,
+};
 export default Main;
