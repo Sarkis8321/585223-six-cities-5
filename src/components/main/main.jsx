@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import CardPlace from "./card-place";
+import PlaceList from "../place-list/place-list";
 
 const Main = (props) => {
   const {rentOptionsCount, cardPlace} = props;
@@ -87,15 +87,11 @@ const Main = (props) => {
               </ul>
 
             </form>
-            <div className="cities__places-list places__list tabs__content">
 
-              {
-                cardPlace.offerMock.map((offer) => (
-                  <CardPlace key={offer.id} offer={offer} />
-                ))
-              }
 
-            </div>
+            <PlaceList
+              offerMock={cardPlace.offerMock}
+            />
           </section>
           <div className="cities__right-section">
             <section className="cities__map map"></section>

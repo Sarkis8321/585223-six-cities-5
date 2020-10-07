@@ -34,6 +34,7 @@ const App = (props) => {
 App.propTypes = {
   rentOptionsCount: PropTypes.number.isRequired,
   offerMock: PropTypes.array.isRequired
+
 };
 
 export default App;

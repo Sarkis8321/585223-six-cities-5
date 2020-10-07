@@ -1,17 +1,26 @@
 import React from "react";
 import PropTypes from "prop-types";
+import {Link} from "react-router-dom";
 
 const cardPlace = (props) => {
-  const {offer} = props;
+  const {offer, handleHover} = props;
   return (
-    <article className="cities__place-card place-card">
+    <article className="cities__place-card place-card"
+      onMouseEnter={() => {
+        handleHover(offer.id);
+      }}
+      onMouseLeave={() => {
+        handleHover(-1);
+      }}
+    >
+
       <div className="place-card__mark">
         <span>{offer.isPremium ? `Premium` : ``}</span>
       </div>
       <div className="cities__image-wrapper place-card__image-wrapper">
-        <a href="#">
+        <Link to={`offer/${offer.id}`}>
           <img className="place-card__image" src={offer.imgLink} width="260" height="200" alt="Place image" />
-        </a>
+        </Link>
       </div>
       <div className="place-card__info">
         <div className="place-card__price-wrapper">
@@ -33,7 +42,7 @@ const cardPlace = (props) => {
           </div>
         </div>
         <h2 className="place-card__name">
-          <a href="#">{offer.title}</a>
+          <Link to={`offer/${offer.id}`}>{offer.title}</Link>
         </h2>
         <p className="place-card__type">{offer.type}</p>
       </div>
@@ -42,9 +51,8 @@ const cardPlace = (props) => {
 };
 
 cardPlace.propTypes = {
-  key: PropTypes.number.isRequired,
   offer: PropTypes.object.isRequired,
-
+  handleHover: PropTypes.func.isRequired
 };
 
 export default cardPlace;
