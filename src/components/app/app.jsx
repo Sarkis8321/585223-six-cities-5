@@ -13,7 +13,10 @@ const App = (props) => {
     <BrowserRouter>
       <Switch>
         <Route exact path="/">
-          <Main rentOptionsCount={rentOptionsCount} />
+          <Main
+            rentOptionsCount={rentOptionsCount}
+            cardPlace={props}
+          />
         </Route>
         <Route exact path="/login">
           <Login />
@@ -21,7 +24,7 @@ const App = (props) => {
         <Route exact path="/favorites">
           <Favorites />
         </Route>
-        <Route path="/offer/:id?" exact component={Offer} />
+        <Route path="/offer/:id" exact component={Offer} />
 
       </Switch>
     </BrowserRouter>
@@ -30,6 +33,8 @@ const App = (props) => {
 
 App.propTypes = {
   rentOptionsCount: PropTypes.number.isRequired,
+  offerMock: PropTypes.array.isRequired
+
 };
 
 export default App;
