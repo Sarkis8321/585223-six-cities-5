@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import PlaceList from "../place-list/place-list";
+import Coord from "../coord/coord";
 
 const Main = (props) => {
   const {rentOptionsCount, cardPlace} = props;
@@ -94,7 +95,9 @@ const Main = (props) => {
             />
           </section>
           <div className="cities__right-section">
-            <section className="cities__map map"></section>
+            <Coord
+              offerMock={cardPlace.offerMock}
+            />
           </div>
         </div>
       </div>

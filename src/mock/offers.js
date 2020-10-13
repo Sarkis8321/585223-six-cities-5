@@ -18,7 +18,7 @@ const offers = [
     type: `Private room`,
     isPremium: false,
     rating: 80,
-    coord: [53.556, 9.963],
+    coord: [52.369553943508, 4.85309666406198],
     city: `Hamburg`
   },
   {
@@ -29,7 +29,7 @@ const offers = [
     type: `Apartment`,
     isPremium: false,
     rating: 80,
-    coord: [48.856626, 2.292919],
+    coord: [52.3909553943508, 4.929309666406198],
     city: `Paris`
   },
   {
@@ -40,7 +40,7 @@ const offers = [
     type: `Apartment`,
     isPremium: true,
     rating: 100,
-    coord: [50.99, 6.93],
+    coord: [52.3809553943508, 4.939309666406198],
     city: `Cologne`
   }
 ];
