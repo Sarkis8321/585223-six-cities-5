@@ -6,6 +6,7 @@ import Login from "../login/login";
 import Favorites from "../favorites/favorites";
 import Offer from "../offer/offer";
 
+
 const App = (props) => {
   const {rentOptionsCount} = props;
 
@@ -24,7 +25,13 @@ const App = (props) => {
         <Route exact path="/favorites">
           <Favorites />
         </Route>
-        <Route path="/offer/:id" exact component={Offer} />
+        <Route path="/offer/:id" exact >
+          <Offer
+            cardPlace={props}
+
+          />
+
+        </Route>
 
       </Switch>
     </BrowserRouter>
@@ -33,8 +40,8 @@ const App = (props) => {
 
 App.propTypes = {
   rentOptionsCount: PropTypes.number.isRequired,
-  offerMock: PropTypes.array.isRequired
-
+  offerMock: PropTypes.array.isRequired,
+  reviewMock: PropTypes.array.isRequired
 };
 
 export default App;

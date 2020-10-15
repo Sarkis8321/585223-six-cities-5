@@ -21,7 +21,7 @@ const Main = (props) => {
                 <a className="header__nav-link header__nav-link--profile" href="#">
                   <div className="header__avatar-wrapper user__avatar-wrapper">
                   </div>
-                  <span className="header__user-name user__name">Oliver.conner@gmail.com</span>                </a>
+                  <span className="header__user-name user__name">Oliver.conner@gmail.com</span></a>
               </li>
             </ul>
           </nav>
@@ -95,9 +95,13 @@ const Main = (props) => {
             />
           </section>
           <div className="cities__right-section">
-            <Coord
-              offerMock={cardPlace.offerMock}
-            />
+
+            <section className="cities__map ">
+              <Coord
+                offerMock={cardPlace.offerMock}
+              />
+
+            </section>
           </div>
         </div>
       </div>
