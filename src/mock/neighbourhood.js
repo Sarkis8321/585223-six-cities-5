@@ -1,4 +1,4 @@
-const offers = [
+const neighbourhood = [
   {
     id: 1,
     title: `Beautiful & luxurious apartment at graet location`,
@@ -45,4 +45,4 @@ const offers = [
   }
 ];
 
-export default offers;
+export default neighbourhood;

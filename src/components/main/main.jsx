@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import PlaceList from "../place-list/place-list";
+import Coord from "../coord/coord";
 
 const Main = (props) => {
   const {rentOptionsCount, cardPlace} = props;
@@ -20,7 +21,7 @@ const Main = (props) => {
                 <a className="header__nav-link header__nav-link--profile" href="#">
                   <div className="header__avatar-wrapper user__avatar-wrapper">
                   </div>
-                  <span className="header__user-name user__name">Oliver.conner@gmail.com</span>                </a>
+                  <span className="header__user-name user__name">Oliver.conner@gmail.com</span></a>
               </li>
             </ul>
           </nav>
@@ -94,7 +95,13 @@ const Main = (props) => {
             />
           </section>
           <div className="cities__right-section">
-            <section className="cities__map map"></section>
+
+            <section className="cities__map ">
+              <Coord
+                offerMock={cardPlace.offerMock}
+              />
+
+            </section>
           </div>
         </div>
       </div>
