@@ -1,7 +1,12 @@
 import React, {PureComponent} from "react";
 import leaflet from "leaflet";
 import PropTypes from "prop-types";
-
+const city = [52.38333, 4.9];
+const zoom = 12;
+const icon = leaflet.icon({
+  iconUrl: `img/pin.svg`,
+  iconSize: [30, 30]
+});
 
 class Coord extends PureComponent {
 
@@ -14,12 +19,7 @@ class Coord extends PureComponent {
   }
 
   componentDidMount() {
-    const city = [52.38333, 4.9];
-    const icon = leaflet.icon({
-      iconUrl: `img/pin.svg`,
-      iconSize: [30, 30]
-    });
-    const zoom = 12;
+
 
     const map = leaflet.map(`map`, {
       center: city,
