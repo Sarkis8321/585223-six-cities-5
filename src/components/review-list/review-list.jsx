@@ -6,6 +6,7 @@ class ReviewList extends PureComponent {
   constructor(props) {
     super(props);
     this.reviewItems = props.reviewItems;
+
   }
 
 
@@ -14,15 +15,14 @@ class ReviewList extends PureComponent {
       <React.Fragment>
         <h2 className="reviews__title">Reviews &middot; <span className="reviews__amount">1</span></h2>
         <ul className="reviews__list">
-          <ReviewItem />
-          {/*      {
-            this.reviewMock.map((item) => (
+          {
+            this.reviewItems.map((item) => (
 
               <ReviewItem key={item.id}
                 reviewItem={item}
               />
             ))
-          } */}
+          }
         </ul>
       </React.Fragment>
 

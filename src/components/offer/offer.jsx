@@ -1,7 +1,10 @@
 import React, {PureComponent} from "react";
 import ReviewForm from "../review-form/review-form";
 import ReviewList from "../review-list/review-list";
-
+import reviews from "../../mock/reviews";
+/* import geoObjects from "../../mock/neighbourhood";
+import NeighbourhoodMap from "../map/map";
+import SimpleExample from "../map/example"; */
 class Offer extends PureComponent {
   constructor(props) {
 
@@ -154,7 +157,7 @@ class Offer extends PureComponent {
                 </div>
                 <section className="property__reviews reviews">
                   <ReviewList
-                    reviewItems={this.reviewMock}
+                    reviewItems={reviews}
                   />
 
                   <ReviewForm />
@@ -162,8 +165,11 @@ class Offer extends PureComponent {
                 </section>
               </div>
             </div>
-            <section className="property__map map"></section>
-          </section>
+            {/*   <NeighbourhoodMap
+              geoObjects={geoObjects}
+            /> */}
+            {/*             <SimpleExample/>
+ */}          </section>
           <div className="container">
             <section className="near-places places">
               <h2 className="near-places__title">Other places in the neighbourhood</h2>

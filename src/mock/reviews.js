@@ -19,7 +19,7 @@ const reviews = [
   },
   {
     id: 3,
-    offerId: 5,
+    offerId: 4,
     avatar: `img/avatar-max.jpg`,
     autor: `Alex`,
     rating: 3,

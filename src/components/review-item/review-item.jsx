@@ -1,4 +1,5 @@
 import React, {PureComponent} from "react";
+import PropTypes from "prop-types";
 
 
 class ReviewItem extends PureComponent {
@@ -6,13 +7,14 @@ class ReviewItem extends PureComponent {
     super(props);
   }
   render() {
+    const {autor} = this.props.reviewItem;
     return (
       <li className="reviews__item">
         <div className="reviews__user user">
           <div className="reviews__avatar-wrapper user__avatar-wrapper">
             <img className="reviews__avatar user__avatar" src="img/avatar-max.jpg" width="54" height="54" alt="Reviews avatar" />
           </div>
-          <span className="reviews__user-name">Max</span>
+          <span className="reviews__user-name">{autor}</span>
         </div>
         <div className="reviews__info">
           <div className="reviews__rating rating">
@@ -32,4 +34,8 @@ class ReviewItem extends PureComponent {
 
   }
 }
+ReviewItem.propTypes = {
+  reviewItem: PropTypes.object.isRequired,
+};
+
 export default ReviewItem;
