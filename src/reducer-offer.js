@@ -1,11 +1,11 @@
-import offers from "./mock/offers";
+/* import offers from "./mock/offers"; */
 
-const initialState = {
+/* const initialState = {
   city: `Amsterdam`,
   offers,
-};
+}; */
 
 
-export const reducer = (state = initialState) => {
+/* export const reducer = (state = initialState) => {
   return state;
-};
+}; */
