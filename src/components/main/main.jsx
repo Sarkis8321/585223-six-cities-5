@@ -96,12 +96,10 @@ const Main = (props) => {
           </section>
           <div className="cities__right-section">
 
-            <section className="cities__map ">
-              <Coord
-                offerMock={cardPlace.offerMock}
-              />
+            <Coord
+              offerMock={cardPlace.offerMock}
+            />
 
-            </section>
           </div>
         </div>
       </div>
