@@ -44,10 +44,12 @@ class Coord extends PureComponent {
   }
 
   render() {
-
+    const style = {
+      height: `100%`,
+      width: `100%`,
+    };
     return (
-      <div id="map"></div>
-
+      <div id="map" style={style}></div>
     );
 
   }

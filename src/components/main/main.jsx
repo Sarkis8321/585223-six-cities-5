@@ -35,17 +35,17 @@ const Main = (props) => {
         <section className="locations container">
           <ul className="locations__list tabs__list">
             <li className="locations__item">
-              <a className="locations__item-link tabs__item" href="#">
+              <a className="locations__item-link tabs__item" href="Paris">
                 <span>Paris</span>
               </a>
             </li>
             <li className="locations__item">
-              <a className="locations__item-link tabs__item" href="#">
+              <a className="locations__item-link tabs__item" href="Cologne">
                 <span>Cologne</span>
               </a>
             </li>
             <li className="locations__item">
-              <a className="locations__item-link tabs__item" href="#">
+              <a className="locations__item-link tabs__item" href="Brussels">
                 <span>Brussels</span>
               </a>
             </li>
@@ -55,12 +55,12 @@ const Main = (props) => {
               </a>
             </li>
             <li className="locations__item">
-              <a className="locations__item-link tabs__item" href="#">
+              <a className="locations__item-link tabs__item" href="Hamburg">
                 <span>Hamburg</span>
               </a>
             </li>
             <li className="locations__item">
-              <a className="locations__item-link tabs__item" href="#">
+              <a className="locations__item-link tabs__item" href="Dusseldorf">
                 <span>Dusseldorf</span>
               </a>
             </li>
@@ -96,12 +96,10 @@ const Main = (props) => {
           </section>
           <div className="cities__right-section">
 
-            <section className="cities__map ">
-              <Coord
-                offerMock={cardPlace.offerMock}
-              />
+            <Coord
+              offerMock={cardPlace.offerMock}
+            />
 
-            </section>
           </div>
         </div>
       </div>
