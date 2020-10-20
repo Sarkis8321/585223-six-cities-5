@@ -8,7 +8,7 @@ import Offer from "../offer/offer";
 
 
 const App = (props) => {
-  const {rentOptionsCount} = props;
+  const {rentOptionsCount, offerMock, reviewMock, cities} = props;
 
   return (
     <BrowserRouter>
@@ -17,6 +17,8 @@ const App = (props) => {
           <Main
             rentOptionsCount={rentOptionsCount}
             cardPlace={props}
+            cities={cities}
+
           />
         </Route>
         <Route exact path="/login">
@@ -35,7 +37,8 @@ const App = (props) => {
 App.propTypes = {
   rentOptionsCount: PropTypes.number.isRequired,
   offerMock: PropTypes.array.isRequired,
-  reviewMock: PropTypes.array.isRequired
+  reviewMock: PropTypes.array.isRequired,
+  cities: PropTypes.array.isRequired
 };
 
 export default App;

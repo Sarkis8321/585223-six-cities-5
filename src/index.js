@@ -7,6 +7,7 @@ import {Provider} from "react-redux";
 import {reducer} from "./reducer-offer";
 import {ActionCreator} from "./action";
 import App from "./components/app/app";
+import cities from "./mock/cities";
 
 const store = createStore(
     reducer, /* preloadedState, */
@@ -23,6 +24,7 @@ ReactDOM.render(
         rentOptionsCount={Options.RENT_COUNT}
         offerMock={OfferMock}
         reviewMock={ReviewMock}
+        cities={cities}
       />
     </Provider>,
     document.querySelector(`#root`)

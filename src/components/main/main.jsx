@@ -2,9 +2,10 @@ import React from "react";
 import PropTypes from "prop-types";
 import PlaceList from "../place-list/place-list";
 import Coord from "../coord/coord";
+import Cities from "../city-list/city-list";
 
 const Main = (props) => {
-  const {rentOptionsCount, cardPlace} = props;
+  const { rentOptionsCount, cardPlace, cities } = props;
 
   return <div className="page page--gray page--main">
     <header className="header">
@@ -33,38 +34,9 @@ const Main = (props) => {
       <h1 className="visually-hidden">Cities</h1>
       <div className="tabs">
         <section className="locations container">
-          <ul className="locations__list tabs__list">
-            <li className="locations__item">
-              <a className="locations__item-link tabs__item" href="Paris">
-                <span>Paris</span>
-              </a>
-            </li>
-            <li className="locations__item">
-              <a className="locations__item-link tabs__item" href="Cologne">
-                <span>Cologne</span>
-              </a>
-            </li>
-            <li className="locations__item">
-              <a className="locations__item-link tabs__item" href="Brussels">
-                <span>Brussels</span>
-              </a>
-            </li>
-            <li className="locations__item">
-              <a className="locations__item-link tabs__item tabs__item--active">
-                <span>Amsterdam</span>
-              </a>
-            </li>
-            <li className="locations__item">
-              <a className="locations__item-link tabs__item" href="Hamburg">
-                <span>Hamburg</span>
-              </a>
-            </li>
-            <li className="locations__item">
-              <a className="locations__item-link tabs__item" href="Dusseldorf">
-                <span>Dusseldorf</span>
-              </a>
-            </li>
-          </ul>
+          <Cities
+            cities={cities}
+          />
         </section>
       </div>
       <div className="cities">
@@ -108,6 +80,8 @@ const Main = (props) => {
 };
 Main.propTypes = {
   rentOptionsCount: PropTypes.number.isRequired,
-  cardPlace: PropTypes.object.isRequired
+  cardPlace: PropTypes.object.isRequired,
+  cities: PropTypes.array.isRequired
+
 };
 export default Main;
