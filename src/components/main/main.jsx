@@ -1,12 +1,23 @@
 import React from "react";
 import PropTypes from "prop-types";
-import PlaceList from "../place-list/place-list";
 import Coord from "../coord/coord";
-import Cities from "../city-list/city-list";
+import {cityType, offerType} from "../../types";
+import {connect} from "react-redux";
+import CitiesList from "../city-list/city-list";
+import withPlaceList from "../../hocs/with-place-list";
+import PLaceList from "../place-list/place-list";
+import NoOffers from '../no-offers/no-offers';
+import Sorting from "../sorting/sorting";
+
+const PlaceListWrapped = withPlaceList(PLaceList);
 
 const Main = (props) => {
-  const { rentOptionsCount, cardPlace, cities } = props;
-
+  const {offers, activeCity} = props;
+  // константы для проверки пустоты ниже
+  const isMainPageEmpty = offers.length ? false : true;
+  const classNameForMainTag = isMainPageEmpty ? `page__main--index-empty` : ``;
+  const classNameForPlaceContainer = isMainPageEmpty ? `cities__places-container--empty` : ``;
+  const classNameForSection = isMainPageEmpty ? `cities__no-places` : `cities__places places`;
   return <div className="page page--gray page--main">
     <header className="header">
       <div className="container">
@@ -30,47 +41,33 @@ const Main = (props) => {
       </div>
     </header>
 
-    <main className="page__main page__main--index">
+    <main className={`page__main page__main--index ${classNameForMainTag}`}>
       <h1 className="visually-hidden">Cities</h1>
-      <div className="tabs">
-        <section className="locations container">
-          <Cities
-            cities={cities}
-          />
-        </section>
-      </div>
+      <CitiesList />
       <div className="cities">
-        <div className="cities__places-container container">
-          <section className="cities__places places">
-            <h2 className="visually-hidden">Places</h2>
-            <b className="places__found">{rentOptionsCount} places to stay in Amsterdam</b>
-            <form className="places__sorting" action="#" method="get">
-              <span className="places__sorting-caption">Sort by</span>
-              <span className="places__sorting-type" tabIndex={0}>
-                Popular
-                <svg className="places__sorting-arrow" width={7} height={4}>
-                  <use xlinkHref="#icon-arrow-select"></use>
-                </svg>
-              </span>
-              <ul className="places__options places__options--custom places__options--opened">
-                <li className="places__option places__option--active" tabIndex="0">Popular</li>
-                <li className="places__option" tabIndex={0}>Price: low to high</li>
-                <li className="places__option" tabIndex={0}>Price: high to low</li>
-                <li className="places__option" tabIndex={0}>Top rated first</li>
-              </ul>
-
-            </form>
+        <div className={`cities__places-container ${classNameForPlaceContainer} container`}>
+          <section className={`${classNameForSection}`}>
+            {isMainPageEmpty
+              ? <NoOffers city={activeCity.name} />
+              : <React.Fragment>
+                <h2 className="visually-hidden">Places</h2>
+                <b className="places__found">{offers.length} places to stay in {activeCity.name}</b>
+                <Sorting/>
 
 
-            <PlaceList
-              offerMock={cardPlace.offerMock}
-            />
+                <PlaceListWrapped
+                  offers={offers}
+                />
+              </React.Fragment>
+            }
           </section>
           <div className="cities__right-section">
 
-            <Coord
-              offerMock={cardPlace.offerMock}
-            />
+            {isMainPageEmpty
+              ? ``
+              : <Coord
+                coords={offers.map(({coord}) => coord)}
+              />}
 
           </div>
         </div>
@@ -79,9 +76,18 @@ const Main = (props) => {
   </div>;
 };
 Main.propTypes = {
-  rentOptionsCount: PropTypes.number.isRequired,
-  cardPlace: PropTypes.object.isRequired,
-  cities: PropTypes.array.isRequired
-
+  offers: PropTypes.arrayOf(offerType),
+  activeCity: cityType,
 };
-export default Main;
+
+const mapStateToProps = (state) => {
+  const currentCityOffers = state.offers.filter((offer) => offer.cityId === state.activeCityId);
+  const activeCity = state.cities.find((item) => item.id === state.activeCityId);
+
+
+  return {
+    offers: currentCityOffers,
+    activeCity,
+  };
+};
+export default connect(mapStateToProps)(Main);

@@ -1,44 +1,39 @@
-import React, {PureComponent} from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import CardPlace from "./card-place";
+import {offerType} from "../../types";
+import {connect} from "react-redux";
+import {getSortedOffers} from "../../utils/functions";
 
+const PLaceList = ({offers, handleHover}) => {
 
-class PlaceList extends PureComponent {
-  constructor(props) {
+  return (
+    <div className="cities__places-list places__list tabs__content">
 
-    super(props);
-    this.handleHover = this.handleHover.bind(this);
-    this.state = {
-      activePlace: -1,
-    };
-  }
+      {
+        offers.map((offer) => (
+          <CardPlace key={offer.id} offer={offer} handleHover={handleHover} />
+        ))
+      }
 
-  handleHover(placeIndex) {
-    this.setState({
-      activePlace: placeIndex
-    });
-  }
+    </div>
+  );
 
-  render() {
-    const {offerMock} = this.props;
-    return (
-
-      <div className="cities__places-list places__list tabs__content">
-
-        {
-          offerMock.map((offer) => (
-
-            <CardPlace key={offer.id} offer={offer} handleHover={this.handleHover} />
-          ))
-        }
-
-      </div>
-    );
-
-  }
-}
-
-PlaceList.propTypes = {
-  offerMock: PropTypes.array.isRequired,
 };
-export default PlaceList;
+
+
+PLaceList.propTypes = {
+  offers: PropTypes.arrayOf(offerType),
+  activePlaceIndex: PropTypes.number.isRequired,
+  handleHover: PropTypes.func.isRequired,
+
+};
+
+const mapStateToProps = (state) => {
+  const currentCityOffers = getSortedOffers(state.offers.filter((offer) => offer.cityId === state.activeCityId), state.activeSortingType);
+  return {
+    offers: currentCityOffers,
+  };
+};
+export default connect(mapStateToProps)(PLaceList);
+

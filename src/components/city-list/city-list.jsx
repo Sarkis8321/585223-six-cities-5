@@ -1,7 +1,8 @@
 import React from "react";
 import PropTypes from 'prop-types';
-import {ActionCreator} from '../../state/reducer';
+import {citiesTypeArray} from "../../types/index";
 import {connect} from "react-redux";
+import {ActionCreator} from '../../reducer/data';
 
 const CityItem = React.memo(function CityItem({name, setCurrentCityAsActive, isActive}) {
   return (
@@ -45,7 +46,7 @@ CityItem.propTypes = {
 };
 
 CitiesList.propTypes = {
-  cities: PropTypes.array.isRequired,
+  cities: citiesTypeArray,
   setCurrentCityAsActive: PropTypes.func.isRequired,
   activeCityId: PropTypes.number.isRequired,
 };
@@ -58,7 +59,10 @@ const mapStateToProps = (state) => {
 };
 
 const mapDispatchToProps = (dispatch) => ({
-  setCurrentCityAsActive: (id) => () => dispatch(ActionCreator.setActiveCity(id))
+  setCurrentCityAsActive: (id) => (evt) => {
+    evt.preventDefault();
+    dispatch(ActionCreator.setActiveCity(id));
+  }
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(CitiesList);
